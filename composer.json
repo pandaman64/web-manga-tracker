@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "laminas/laminas-feed": "^2.22",
+        "laminas/laminas-http": "2.19.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
     },
