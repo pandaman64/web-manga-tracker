@@ -1,9 +1,8 @@
 @php use App\Models\Chapter; @endphp
 @php /** @var Chapter $chapter */ @endphp
 
-<div>
-    <div
-        class="w-full border-2 border-black rounded-lg p-2 lg:p-4 shadow-md bg-white flex flex-row gap-2">
+<a href="{{ url()->query('/view', ['chapter_id' => $chapter->id]) }}" target="_blank" rel="noopener noreferrer">
+    <div class="w-full border-2 border-black rounded-lg p-2 lg:p-4 shadow-md bg-white flex flex-row gap-2">
         <div class="w-2/5">
             <img src="{{ $chapter->enclosure_url }}" alt="{{ $chapter->title }}">
         </div>
@@ -13,4 +12,4 @@
             <p class="text-sm text-gray-400">{{ $chapter->publisher->display_name }}</p>
         </div>
     </div>
-</div>
+</a>

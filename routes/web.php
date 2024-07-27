@@ -16,12 +16,13 @@ Route::get('/', function () {
     return view('welcome', ['chapters' => $chapters]);
 });
 
-Route::get('/redirect', function (Request $request) {
-    $to = $request->query('to');
+Route::get('/view', function (Request $request) {
+    /** @var Chapter $chapter */
+    $chapter = Chapter::query()->find($request->query('chapter_id'));
     $read = $request->session()->get('read', []);
-    $read[] = $to;
+    $read[] = $chapter->id;
     $request->session()->put('read', $read);
-    return redirect($to);
+    return redirect($chapter->permalink);
 });
 
 Route::get('/auth/google/redirect', function () {
