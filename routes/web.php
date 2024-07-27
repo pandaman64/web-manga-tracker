@@ -10,5 +10,8 @@ Route::get('/', function () {
 
 Route::get('/redirect', function (Request $request) {
     $to = $request->query('to');
+    $read = $request->session()->get('read', []);
+    $read[] = $to;
+    $request->session()->put('read', $read);
     return redirect($to);
 });
