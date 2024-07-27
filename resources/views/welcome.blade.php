@@ -16,9 +16,15 @@
                 <div class="lg:justify-center text-2xl font-bold">
                     Web漫画トラッカー
                 </div>
+
+                @auth
+                    <div>ログイン中</div>
+                @endauth
+                @guest
                 <div>
                     <a href="/auth/google/redirect">ログイン</a>
                 </div>
+                @endguest
             </header>
 
             <main class="lg:mt-6">

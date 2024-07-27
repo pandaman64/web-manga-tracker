@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            // Allow only social login
+            // $table->timestamp('email_verified_at')->nullable();
+            // $table->string('password');
+            $table->string('provider');
+            $table->string('provider_id')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
