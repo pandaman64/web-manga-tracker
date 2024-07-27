@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+@php use App\Models\Chapter; @endphp
+@php /** @var array<Chapter> $chapters */ @endphp
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -21,39 +23,16 @@
                     <div>ログイン中</div>
                 @endauth
                 @guest
-                <div>
-                    <a href="/auth/google/redirect">ログイン</a>
-                </div>
+                    <div>
+                        <a href="/auth/google/redirect">ログイン</a>
+                    </div>
                 @endguest
             </header>
 
             <main class="lg:mt-6">
                 <div class="flex flex-col gap-4">
-                    @php /** @var Laminas\Feed\Reader\Entry\EntryInterface $item */ @endphp
-                    @foreach ($items as $item)
-                        @php
-                            $read = session('read', []);
-                            $is_read = in_array($item->getPermalink(), $read, true);
-                        @endphp
-                        <a href="/redirect?to={{ $item->getPermaLink() }}" target="_blank" rel="noreferrer">
-                            <div
-                                class="w-full border-2 border-black rounded-lg p-2 lg:p-4 shadow-md bg-white flex flex-row gap-2">
-                                <div class="w-2/5">
-                                    <img src="{{ $item->getEnclosure()?->url }}" alt="{{ $item->getTitle() }}">
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-400 text-clip">{{ $item->getDateModified()?->format('Y-m-d') }}</p>
-                                    <h2 class="md:text-xl font-bold">{{ $item->getTitle() }}</h2>
-                                    <div class="flex flex-row">
-                                        @if($is_read)
-                                            <span class="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                              既読
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                    @foreach($chapters as $chapter)
+                        <x-chapter-card :chapter="$chapter"/>
                     @endforeach
                 </div>
             </main>

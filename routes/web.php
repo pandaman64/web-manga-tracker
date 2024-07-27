@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Chapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -7,8 +8,8 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 
 Route::get('/', function () {
-    $feed = Laminas\Feed\Reader\Reader::import('https://shonenjumpplus.com/atom');
-    return view('welcome', ['items' => $feed]);
+    $chapters = Chapter::query()->orderBy('feed_updated_at', 'desc')->limit(50)->get();
+    return view('welcome', ['chapters' => $chapters]);
 });
 
 Route::get('/redirect', function (Request $request) {

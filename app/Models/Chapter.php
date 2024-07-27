@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $author
  * @property string $permalink
  * @property string|null $enclosure_url
- * @property string $feed_updated_at
+ * @property \Illuminate\Support\Carbon $feed_updated_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Chapter newModelQuery()
@@ -38,4 +38,16 @@ use Illuminate\Database\Eloquent\Model;
 class Chapter extends Model
 {
     use HasFactory;
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'feed_updated_at' => 'datetime'
+        ];
+    }
 }
