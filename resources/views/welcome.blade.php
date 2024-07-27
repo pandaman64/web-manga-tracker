@@ -1,5 +1,11 @@
-@php use App\Models\Chapter; @endphp
-@php /** @var array<Chapter> $chapters */ @endphp
+@php
+    use App\Models\Chapter;
+    use Illuminate\Support\Collection;
+    /**
+     * @var array<Chapter> $chapters
+     * @var Collection<int, int> $viewed_chapters
+     */
+@endphp
     <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -32,7 +38,7 @@
             <main class="lg:mt-6">
                 <div class="flex flex-col gap-4">
                     @foreach($chapters as $chapter)
-                        <x-chapter-card :chapter="$chapter"/>
+                        <x-chapter-card :chapter="$chapter" :viewed="$viewed_chapters->contains($chapter->id)"/>
                     @endforeach
                 </div>
             </main>

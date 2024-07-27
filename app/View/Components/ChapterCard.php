@@ -10,13 +10,15 @@ use Illuminate\View\Component;
 class ChapterCard extends Component
 {
     public readonly Chapter $chapter;
+    public readonly bool $viewed;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(Chapter $chapter)
+    public function __construct(Chapter $chapter, bool $viewed)
     {
         $this->chapter = $chapter;
+        $this->viewed = $viewed;
     }
 
     /**
