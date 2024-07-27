@@ -10,6 +10,7 @@
         <div>
             <p class="text-sm text-gray-400">{{ $chapter->feed_updated_at }}</p>
             <h2 class="md:text-xl font-bold">{{ $chapter->title }}</h2>
+            <p class="text-sm text-gray-400">{{ $chapter->publisher->display_name }}</p>
         </div>
     </div>
 </div>

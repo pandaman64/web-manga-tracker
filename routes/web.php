@@ -8,7 +8,11 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 
 Route::get('/', function () {
-    $chapters = Chapter::query()->orderBy('feed_updated_at', 'desc')->limit(50)->get();
+    $chapters = Chapter::query()
+        ->orderBy('feed_updated_at', 'desc')
+        ->limit(50)
+        ->with('publisher')
+        ->get();
     return view('welcome', ['chapters' => $chapters]);
 });
 

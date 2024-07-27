@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * 
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon $feed_updated_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Publisher $publisher
  * @method static \Illuminate\Database\Eloquent\Builder|Chapter newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Chapter newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Chapter query()
@@ -49,5 +51,10 @@ class Chapter extends Model
         return [
             'feed_updated_at' => 'datetime'
         ];
+    }
+
+    public function publisher(): BelongsTo
+    {
+        return $this->belongsTo(Publisher::class);
     }
 }
