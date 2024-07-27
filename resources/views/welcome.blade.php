@@ -12,9 +12,12 @@
     <div
         class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
         <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-            <header class="items-center py-2">
+            <header class="flex flex-row justify-between items-center py-2">
                 <div class="lg:justify-center text-2xl font-bold">
                     Web漫画トラッカー
+                </div>
+                <div>
+                    <a href="/auth/google/redirect">ログイン</a>
                 </div>
             </header>
 
@@ -34,7 +37,7 @@
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-400 text-clip">{{ $item->getDateModified()?->format('Y-m-d') }}</p>
-                                    <h2 class="text-xl font-bold">{{ $item->getTitle() }}</h2>
+                                    <h2 class="md:text-xl font-bold">{{ $item->getTitle() }}</h2>
                                     <div class="flex flex-row">
                                         @if($is_read)
                                             <span class="inline-flex items-center px-1 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
