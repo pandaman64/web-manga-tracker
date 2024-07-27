@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PublisherSeeder::class,
+            ChapterSeeder::class,
         ]);
     }
 }
